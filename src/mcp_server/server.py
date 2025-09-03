@@ -62,8 +62,8 @@ def get_name_and_image_of_flower() -> List[TextContent | ImageContent]:
 # This is the main entry point for your server
 def main():
     logger.info('Starting your-new-server')
-    # mcp.run(transport="stdio")
-    mcp.run(transport="streamable-http")
+    mcp.run(transport="stdio")
+    # mcp.run(transport="streamable-http")
 
 if __name__ == "__main__":
     main()
