@@ -182,6 +182,10 @@ uv add [package_name]
 
 the `pyproject.toml` will be updated automatically
 
+
+## Contributing To Our Registry
+We're maintaining [a fully open sourced MCP registry](https://mcpm.sh/registry/). If you're interested in contributing, please check [this doc](https://github.com/pathintegral-institute/mcpm.sh/blob/main/mcp-registry/README.md#1-create-a-github-issue-easiest).
+
 ## 📚 Additional Resources
 
 - **[MCP Documentation](https://modelcontextprotocol.io/docs)** - Official MCP documentation
