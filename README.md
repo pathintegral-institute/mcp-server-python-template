@@ -183,6 +183,32 @@ uv add [package_name]
 the `pyproject.toml` will be updated automatically
 
 
+## Let Others Use It
+
+Let anyone run your MCP server without cloning or installing globally using uvx:
+
+```bash
+uvx --from 'git+https://github.com/[AUTHOR]/[REPO_NAME]@<TAG_OR_BRANCH_OR_SHA>' mcp-server
+```
+
+What to fill in:
+- `git+https://github.com/[AUTHOR]/[REPO_NAME]`: Your public GitHub repo. The repo must be a valid Python package with a `pyproject.toml`.
+- `@<TAG_OR_BRANCH_OR_SHA>`: Optional but recommended. Pin to a release tag (e.g. `@v0.1.0`) for reproducible installs; omit to use the default branch.
+- `mcp-server`: The console script name. This template already defines it in `pyproject.toml` as `mcp-server = "mcp_server.server:main"`.
+
+How it works:
+- `uvx` creates an isolated, ephemeral environment, installs your package (+ deps from `pyproject.toml`/`uv.lock`), then runs the specified entry point. Nothing is installed globally.
+
+Client usage:
+- Most MCP clients let you specify a command to launch a server. Use the same one‑liner above as the command. If your server requires flags, add them after `mcp-server`.
+- This template defaults to stdio transport. If you switch to HTTP in `server.py`, configure your client accordingly and ensure the port is reachable.
+
+Tips for maintainers:
+- Publish release tags so others can pin versions (stability and cache‑friendly).
+- Keep `requires-python` and dependencies up to date; commit `uv.lock` for reproducibility.
+- Ensure the entry point remains `mcp-server` (or update documentation if renamed).
+
+
 ## Contributing To Our Registry
 We're maintaining [a fully open sourced MCP registry](https://mcpm.sh/registry/). If you're interested in contributing, please check [this doc](https://github.com/pathintegral-institute/mcpm.sh/blob/main/mcp-registry/README.md#1-create-a-github-issue-easiest).
 
